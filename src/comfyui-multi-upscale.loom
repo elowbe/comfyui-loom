@@ -1,0 +1,20 @@
+filter,,(-208.0,-854.0),,comfyui-upscale.loom,,false,,{"upscaler":"[52, 120, 69, 83, 82, 71, 65, 78, 46, 112, 116, 104]","input_img":"[]","timeout":"[49, 50, 48, 46, 48]"},,false
+repeat,,(-1395.0,-666.0),,0
+global,,(-2708.0,-833.0),,img
+expose_input,,(-4479.0,-937.0),,image,,[],,Image,,0,,0,,[]
+expose_input,,(-1958.0,-1250.0),,steps,,[49, 48, 46, 48],,Number,,0,,0,,[]
+global,,(-812.0,-791.0),,img
+filter,,(-2250.0,-687.0),,dependencies/utils-loom/src/sync.loom,,false,,{"input2":"[]","input1":"[]"},,false
+global,,(1687.0,-854.0),,img
+img-probe,,(2562.0,-250.0)
+file,,(-4562.0,-1354.0),,[102, 108, 111, 111, 114, 46, 112, 110, 103],,false
+expose_input,,(-750.0,-1270.0),,upscaler,,[],,Select,,0,,0,,[36, 123, 67, 79, 77, 70, 89, 85, 73, 95, 68, 73, 82, 125, 92, 109, 111, 100, 101, 108, 115, 92, 117, 112, 115, 99, 97, 108, 101, 95, 109, 111, 100, 101, 108, 115]
+expose_input,,(-750.0,-458.0),,timeout,,[54, 48, 46, 48],,Number,,0,,0,,[]
+expose_input,,(-1354.0,-41.0),,model_scale,,[52, 46, 48],,Number,,0,,0,,[]
+filter,,(729.0,-708.0),,dependencies/image-utils-loom/src/scale-image.loom,,false,,{"image":"[]","scale":"[50, 46, 48]"},,false
+filter,,(-791.0,41.0),,dependencies/math-loom/src/divide.loom,,false,,{"a":"[49, 46, 48]","b":"[48, 46, 48]"},,false
+expose_input,,(-4104.0,-354.0),,image_scale,,[49, 46, 53],,Number,,0,,0,,[]
+filter,,(-3541.0,-958.0),,dependencies/image-utils-loom/src/scale-image.loom,,false,,{"image":"[]","scale":"[50, 46, 48]"},,false
+img-probe,,(1420.0,-246.0)
+connections:0:upscaler>10:terminal0,0:input_img>5:get,0:timeout>11:terminal0,1:iterations>4:terminal0,1:sync>6:output1,2:set>16:scaled_image,5:sync>1:iteration,6:input1>2:get,7:set>13:scaled_image,8:probe>7:get,13:image>0:img,13:scale>14:result,14:b>12:terminal0,16:image>9:read,16:scale>15:terminal0,17:probe>16:scaled_image,
+.port=80
